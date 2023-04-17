@@ -4,45 +4,35 @@ const headersEl = document.getElementById('headers');
 const configEl = document.getElementById('config');
 
 const get = () => {
-    // axios({
-    //     methods:'get',
-    //         url: 'https://jsonplaceholder.typicode.com/posts'             
-        
-    // })
 
-    // axios.get("https://jsonplaceholder.typicode.com/posts", {
-    //     params: {
-    //         _limit: 6
+    const config ={
+        params: {
+            _limit: 6
             
-    //     }
-    // })
-    //     .then((response) => {
-    //         renderOutput(response);
-    //         // console.log(response);
-    //     });
-
-    // axios.get('https://jsonplaceholder.typicode.com/posts', {
-    //     params: {
-    //         _limit: 5
-    //     }
-    // })
-    //     .then((response) => {
-    //         renderOutput(response)
-    //     })
-
-    // meus testes
-    axios.get("https://jsonplaceholder.typicode.com/posts").then(function (response) {
-        console.log("data",response.data);
-        console.log("data id ",response.data.id);
-        console.log("respponse === status",response.status);
-        console.log("respponse === statusText",response.statusText);
-        console.log("respponse === headers",response.headers);
-        console.log("respponse === config",response.config);
-      });
-    console.log('get');
+        },
+    }
+  
+    axios.get("https://jsonplaceholder.typicode.com/posts", config)
+    .then((response) => 
+        renderOutput(response)
+    );   
+   
+    
 }
 
 const post = () => {
+    const data = {
+        title: 'foo',
+        body: 'bar',
+        userId: 1
+
+    }
+
+    axios.post("https://jsonplaceholder.typicode.com/posts", data)
+    .then((response) => 
+        renderOutput(response)
+    );   
+
     console.log('post');
 }
 
