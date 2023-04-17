@@ -138,6 +138,10 @@ const transform = () => {
 }
 
 const errorHandling = () => {
+    axios.get("https://jsonplaceholder.typicode.com/postserror", config)
+    .then((response) => renderOutput(response))
+    .catch((error) => renderOutput(error.response));
+
     console.log('errorHandling');
 }
 
