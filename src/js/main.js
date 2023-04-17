@@ -3,6 +3,9 @@ const dataEl = document.getElementById('data');
 const headersEl = document.getElementById('headers');
 const configEl = document.getElementById('config');
 
+//config globais
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+
 const get = () => {
 
     const config ={
@@ -12,11 +15,17 @@ const get = () => {
         },
     }
   
-    axios.get("https://jsonplaceholder.typicode.com/posts", config)
-    .then((response) => 
-        renderOutput(response)
-    );   
-   
+     
+    // axios.get("posts", config)
+    // .then((response) => 
+    //     renderOutput(response)
+    // );   
+
+    // outro end point
+    axios.get("https://jsonplaceholder.typicode.com/users", config)
+        .then((response) => 
+            renderOutput(response)
+        );  
     
 }
 
@@ -28,7 +37,7 @@ const post = () => {
 
     }
 
-    axios.post("https://jsonplaceholder.typicode.com/posts", data)
+    axios.post("posts", data)
     .then((response) => 
         renderOutput(response)
     );   
@@ -49,7 +58,7 @@ const put = () => {
 
     }
     
-    axios.put("https://jsonplaceholder.typicode.com/posts/1", data)
+    axios.put("posts/1", data)
     .then((response) => 
         renderOutput(response)
     );   
@@ -64,7 +73,7 @@ const patch = () => {
 
     }
     
-    axios.put("https://jsonplaceholder.typicode.com/posts/1", data)
+    axios.put("posts/1", data)
     .then((response) => 
         renderOutput(response)
     );   
@@ -75,7 +84,7 @@ const patch = () => {
 const del = () => {
     
     
-    axios.delete("https://jsonplaceholder.typicode.com/posts/3", data)
+    axios.delete("posts/3", data)
     .then((response) => 
         renderOutput(response)
     );   
@@ -85,8 +94,8 @@ const del = () => {
 
 const multiple = () => {
     Promise.all([
-       axios.get("https://jsonplaceholder.typicode.com/posts?_limit=3"),
-       axios.get("https://jsonplaceholder.typicode.com/users?_limit=3"),
+       axios.get("posts?_limit=3"),
+       axios.get("users?_limit=3"),
     ]).then((response) => {
         console.table(response[0].data);
         console.table(response[1].data);
@@ -128,7 +137,7 @@ const transform = () => {
     };
   
 
-    axios.get("https://jsonplaceholder.typicode.com/posts", config)
+    axios.get("posts", config)
     .then((response) => 
         renderOutput(response)
     );   
@@ -138,7 +147,7 @@ const transform = () => {
 }
 
 const errorHandling = () => {
-    axios.get("https://jsonplaceholder.typicode.com/postserror", config)
+    axios.get("postserror", config)
     .then((response) => renderOutput(response))
     .catch((error) => renderOutput(error.response));
 
