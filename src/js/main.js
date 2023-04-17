@@ -36,11 +36,39 @@ const post = () => {
     console.log('post');
 }
 
+
+// put por padrão seria pra atualizar todos os campos
 const put = () => {
+
+    //payLoad
+    const data = {
+        id:1,  //opcional
+        title: 'foo',
+        body: 'bar',
+        userId: 1
+
+    }
+    
+    axios.put("https://jsonplaceholder.typicode.com/posts/1", data)
+    .then((response) => 
+        renderOutput(response)
+    );   
     console.log('put');
 }
 
 const patch = () => {
+    const data = {
+       
+        title: 'fooPutch',
+       
+
+    }
+    
+    axios.put("https://jsonplaceholder.typicode.com/posts/1", data)
+    .then((response) => 
+        renderOutput(response)
+    );   
+
     console.log('patch');
 }
 
