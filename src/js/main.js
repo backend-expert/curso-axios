@@ -84,6 +84,14 @@ const del = () => {
 }
 
 const multiple = () => {
+    Promise.all([
+       axios.get("https://jsonplaceholder.typicode.com/posts?_limit=3"),
+       axios.get("https://jsonplaceholder.typicode.com/users?_limit=3"),
+    ]).then((response) => {
+        console.table(response[0].data);
+        console.table(response[1].data);
+        
+    })
     console.log('multiple');
 }
 
