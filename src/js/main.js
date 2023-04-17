@@ -73,6 +73,13 @@ const patch = () => {
 }
 
 const del = () => {
+    
+    
+    axios.delete("https://jsonplaceholder.typicode.com/posts/3", data)
+    .then((response) => 
+        renderOutput(response)
+    );   
+
     console.log('delete');
 }
 
