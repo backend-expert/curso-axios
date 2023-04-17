@@ -96,6 +96,44 @@ const multiple = () => {
 }
 
 const transform = () => {
+    const config = {
+        params: {
+            _limit :3
+        }, 
+         transformResponse: [function (data) {
+        // Faça o que quiser para transformar os dados
+        // return string
+        // return data;
+       
+
+        // parse pra json
+        //return JSON.parse(data);
+        
+        // const payload = JSON.parse(data).map(
+        //     id => id.id,
+           
+        // );
+        const payload = JSON.parse(data).map(dt => {
+            return {
+                ...dt,
+                is_selected: false,
+                tipo: dt.id,
+            }
+        }
+           
+        );
+
+        return payload;
+    }],
+    };
+  
+
+    axios.get("https://jsonplaceholder.typicode.com/posts", config)
+    .then((response) => 
+        renderOutput(response)
+    );   
+   
+
     console.log('transform');
 }
 
